@@ -4,7 +4,7 @@ Welcome to my **Projects Portfolio** repository! This repository contains a coll
 
 
 <div style="text-align: center;">
-    <img src="banner.jpg" alt="My Banner" style="width: 100%; max-width: 700px; height: auto; border-radius: 10px;"/>
+    <img src="banner.jpg" alt="My Banner" style="width: 100%; max-width: 700px; height: 400px; border-radius: 10px;"/>
 </div>
 
 ## **Feel Free to Reach out**
