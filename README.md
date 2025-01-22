@@ -1,18 +1,17 @@
-# Projects Portfolio: Data Science & Machine Learning
+# **Projects Portfolio:** Data Science & Machine Learning
 
+Welcome to my **Projects Portfolio** repository! This repository contains a collection of my work in **Data Analysis** and **Machine Learning (ML)**. As I expand my learning, I will be adding more projects on **Generative AI**, **Deep Learning**, **NLP**, and **Agentic AI** in the future so be with me.
 
-
-Welcome to my **Projects Portfolio** repository! This repository contains a collection of my work in **Data Analysis** and **Machine Learning (ML)**. Each project demonstrates my ability to explore, analyze, and model data to solve real-world problems. I am continuously learning and will be adding more projects in the future, including **Generative AI** and **Agentic AI**.
 
 <div style="text-align: center;">
-    <img src="banner.jpg" alt="My Banner" style="width: 100%; max-width: 700px; border-radius: 10px;"/>
+    <img src="banner.jpg" alt="My Banner" style="width: 100%; max-width: 700px; height: auto; border-radius: 10px;"/>
 </div>
-  
-As I expand my learning, I will be adding more projects on **Generative AI**, **Deep Learning** and **Agentic AI** in the future.
+
+## **Feel Free to Reach out**
 
 <div class="contact-info">
   <h3 class="section-title">
-    <strong>Author Name:</strong>
+    <strong>Author:</strong>
     <a href="https://www.linkedin.com/in/yousuf-shah-7ba9492b4/" target="_blank">Yousuf Shah</a>
   </h3>
   <table>
