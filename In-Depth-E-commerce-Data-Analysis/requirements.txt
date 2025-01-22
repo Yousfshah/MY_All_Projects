@@ -1,0 +1,7 @@
+Python == 3.13.0
+NumPy
+Pandas
+Seaborn
+Matplotlib
+Scipy
+Scikit-learn
