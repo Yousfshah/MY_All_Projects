@@ -1,7 +1,0 @@
-python == 3.13.0
-numpy
-pandas
-seaborn
-matplotlib
-scikit-learn
-joblib
