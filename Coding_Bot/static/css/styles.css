@@ -1,0 +1,561 @@
+:root {
+    --primary-bg: #0a0a0a;
+    --secondary-bg: #1a2234;
+    --text-primary: #ffffff;
+    --text-secondary: #a0aec0;
+    --accent-color: #3182ce;
+    --accent-hover: #4299e1;
+    --input-bg: #1a2234;
+    --border-color: #2d3748;
+    --hover-color: #4299e1;
+    --scrollbar-thumb: #2d3748;
+    --code-bg: #1a2234;
+    --markdown-heading: #63b3ed;
+    --markdown-bold: #90cdf4;
+    --markdown-list: #63b3ed;
+    --shadow-color: rgba(0, 0, 0, 0.25);
+    --highlight-color: rgba(255, 255, 255, 0.05);
+}
+
+.light-mode {
+    --primary-bg: #f7fafc;
+    --secondary-bg: #ffffff;
+    --text-primary: #2d3748;
+    --text-secondary: #4a5568;
+    --accent-color: #3182ce;
+    --accent-hover: #4299e1;
+    --input-bg: #edf2f7;
+    --border-color: #e2e8f0;
+    --hover-color: #4299e1;
+    --scrollbar-thumb: #e2e8f0;
+    --code-bg: #f7fafc;
+    --markdown-heading: #2b6cb0;
+    --markdown-bold: #3182ce;
+    --markdown-list: #2b6cb0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --highlight-color: rgba(255, 255, 255, 0.8);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+    animation: fadeInDown 0.5s ease;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.75rem;
+}
+
+.logo i {
+    color: var(--accent-color);
+    font-size: 2rem;
+    animation: pulse 2s infinite;
+    filter: drop-shadow(0 0 10px var(--accent-color));
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); filter: drop-shadow(0 0 10px var(--accent-color)); }
+    50% { transform: scale(1.1); filter: drop-shadow(0 0 20px var(--accent-color)); }
+    100% { transform: scale(1); filter: drop-shadow(0 0 10px var(--accent-color)); }
+}
+
+.theme-toggle {
+    background: var(--secondary-bg);
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.75rem;
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.5s ease;
+    box-shadow: 
+        -5px -5px 10px var(--highlight-color),
+        5px 5px 10px var(--shadow-color);
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        -8px -8px 16px var(--highlight-color),
+        8px 8px 16px var(--shadow-color);
+}
+
+.theme-toggle:active {
+    transform: translateY(0);
+    box-shadow: inset -2px -2px 5px var(--highlight-color),
+                inset 2px 2px 5px var(--shadow-color);
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-container {
+    background-color: var(--secondary-bg);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+                0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--border-color);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 0.5s ease;
+}
+
+.messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2rem;
+    scroll-behavior: smooth;
+}
+
+.messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+.messages::-webkit-scrollbar-track {
+    background: var(--secondary-bg);
+    border-radius: 4px;
+}
+
+.messages::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: 4px;
+    border: 2px solid var(--secondary-bg);
+}
+
+.message {
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: messageAppear 0.3s ease forwards;
+    font-size: 1.1rem;
+    max-width: 85%;
+}
+
+/* Markdown Content Styling */
+.markdown-content {
+    color: var(--text-primary);
+    line-height: 1.8;
+}
+
+.markdown-content h1 {
+    color: var(--markdown-heading);
+    font-size: 1.8rem;
+    margin: 1.5rem 0;
+    font-weight: 700;
+}
+
+.markdown-content h2 {
+    color: var(--markdown-heading);
+    font-size: 1.5rem;
+    margin: 1.2rem 0;
+    font-weight: 600;
+}
+
+.markdown-content h3 {
+    color: var(--markdown-heading);
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    font-weight: 600;
+}
+
+.markdown-content strong {
+    color: var(--markdown-bold);
+    font-weight: 600;
+}
+
+.markdown-content ul {
+    list-style-type: none;
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+}
+
+.markdown-content li {
+    margin: 0.5rem 0;
+    position: relative;
+}
+
+.markdown-content li::before {
+    content: "•";
+    color: var(--markdown-list);
+    position: absolute;
+    left: -1.5rem;
+    font-weight: bold;
+}
+
+.markdown-content p {
+    margin: 1rem 0;
+}
+
+@keyframes messageAppear {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message.system {
+    color: var(--text-primary);
+    text-align: center;
+    font-size: 1.2rem;
+    max-width: 100%;
+    margin: 0 auto 2rem;
+    padding: 1.5rem;
+    background: var(--input-bg);
+    border-radius: 1rem;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.message.user {
+    background: var(--accent-color);
+    color: white;
+    padding: 1.25rem;
+    border-radius: 1.25rem 1.25rem 0.25rem 1.25rem;
+    margin-left: auto;
+    box-shadow: 
+        -5px -5px 10px var(--highlight-color),
+        5px 5px 10px var(--shadow-color);
+}
+
+.message.bot {
+    background-color: var(--input-bg);
+    padding: 1.5rem;
+    border-radius: 1.25rem 1.25rem 1.25rem 0.25rem;
+    box-shadow: 
+        -5px -5px 10px var(--highlight-color),
+        5px 5px 10px var(--shadow-color);
+}
+
+.code-block {
+    background-color: var(--code-bg);
+    border-radius: 0.75rem;
+    margin: 1rem 0;
+    position: relative;
+    box-shadow: 
+        inset -2px -2px 5px var(--highlight-color),
+        inset 2px 2px 5px var(--shadow-color);
+}
+
+.code-block:hover {
+    box-shadow: 
+        inset -4px -4px 8px var(--highlight-color),
+        inset 4px 4px 8px var(--shadow-color);
+}
+
+.code-block pre {
+    padding: 1.5rem;
+    margin: 0;
+    overflow-x: auto;
+}
+
+.code-block pre::-webkit-scrollbar {
+    height: 8px;
+}
+
+.code-block pre::-webkit-scrollbar-track {
+    background: var(--code-bg);
+    border-radius: 4px;
+}
+
+.code-block pre::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: 4px;
+    border: 2px solid var(--code-bg);
+}
+
+.copy-button {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 
+        -2px -2px 5px var(--highlight-color),
+        2px 2px 5px var(--shadow-color);
+}
+
+.code-block:hover .copy-button {
+    opacity: 1;
+}
+
+.copy-button:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+.copy-button:active {
+    transform: translateY(0);
+    box-shadow: inset -1px -1px 3px var(--highlight-color),
+                inset 1px 1px 3px var(--shadow-color);
+}
+
+.input-container {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    background-color: var(--secondary-bg);
+    position: relative;
+}
+
+#user-input {
+    flex: 1;
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    padding: 1rem;
+    resize: none;
+    height: 60px;
+    border-radius: 1rem;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 
+        inset -4px -4px 8px var(--highlight-color),
+        inset 4px 4px 8px var(--shadow-color);
+}
+
+#user-input:focus {
+    outline: none;
+    box-shadow: 
+        inset -6px -6px 12px var(--highlight-color),
+        inset 6px 6px 12px var(--shadow-color);
+}
+
+#send-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 1rem;
+    padding: 0 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+    box-shadow: 
+        -4px -4px 8px var(--highlight-color),
+        4px 4px 8px var(--shadow-color);
+}
+
+#send-btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 
+        -6px -6px 12px var(--highlight-color),
+        6px 6px 12px var(--shadow-color);
+}
+
+#send-btn:active {
+    transform: translateY(0);
+    box-shadow: inset -2px -2px 5px var(--highlight-color),
+                inset 2px 2px 5px var(--shadow-color);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        padding: 0.75rem;
+        height: 100dvh; /* Dynamic viewport height for mobile */
+    }
+    
+    header {
+        padding: 0.75rem 0;
+        margin-bottom: 0.75rem;
+    }
+
+    .logo {
+        font-size: 1.25rem;
+        gap: 0.5rem;
+    }
+    
+    .logo i {
+        font-size: 1.5rem;
+    }
+
+    .logo h1 {
+        font-size: 1.25rem;
+    }
+    
+    .theme-toggle {
+        padding: 0.5rem;
+        font-size: 1rem;
+    }
+
+    .chat-container {
+        border-radius: 1rem;
+    }
+
+    .messages {
+        padding: 1rem;
+    }
+    
+    .message {
+        font-size: 0.95rem;
+        max-width: 95%;
+        margin-bottom: 1.5rem;
+    }
+
+    .message.system {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+
+    .message.user, .message.bot {
+        padding: 1rem;
+    }
+
+    .markdown-content h1 {
+        font-size: 1.4rem;
+    }
+
+    .markdown-content h2 {
+        font-size: 1.2rem;
+    }
+
+    .markdown-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .code-block {
+        margin: 0.75rem 0;
+        font-size: 0.9rem;
+    }
+
+    .code-block pre {
+        padding: 1rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .input-container {
+        padding: 0.75rem;
+        gap: 0.5rem;
+    }
+
+    #user-input {
+        font-size: 0.95rem;
+        padding: 0.75rem;
+        height: 50px;
+    }
+
+    #send-btn {
+        padding: 0 1.25rem;
+        font-size: 1rem;
+    }
+
+    .copy-button {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    .container {
+        padding: 0.5rem;
+    }
+
+    .messages {
+        padding: 0.75rem;
+    }
+
+    .message {
+        font-size: 0.9rem;
+        max-width: 100%;
+    }
+
+    .code-block {
+        font-size: 0.85rem;
+    }
+
+    #user-input {
+        font-size: 0.9rem;
+        padding: 0.6rem;
+    }
+}
+
+/* Landscape mode */
+@media (max-height: 500px) and (orientation: landscape) {
+    .container {
+        height: auto;
+        min-height: 100dvh;
+    }
+
+    .chat-container {
+        max-height: calc(100dvh - 120px);
+    }
+
+    .messages {
+        max-height: calc(100dvh - 200px);
+    }
+
+    #user-input {
+        height: 40px;
+    }
+}
+
+/* Dark mode support for system preference */
+@media (prefers-color-scheme: dark) {
+    body:not(.light-mode) {
+        color-scheme: dark;
+    }
+}
