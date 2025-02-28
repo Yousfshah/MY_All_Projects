@@ -1,6 +1,6 @@
-# CodeAlpha Internship
+# Kaggle Projects
 
-I am currently doing an online internship at **CodeAlpha** for one month, where I have been assigned a series of exciting tasks to work on. Below are the tasks I am completing during my internship:
+I am currently focusing on Kaggle projects, working on a series of exciting tasks. Below are the tasks I am completing during this period:
 
 <div style="text-align: center;">
     <img src="img.png" alt="Unemplyment Banner" style="width: 100%; max-width: 700px; height:400px; border-radius: 10px;"/>
